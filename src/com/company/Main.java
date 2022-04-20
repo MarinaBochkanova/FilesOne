@@ -11,49 +11,37 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        File games = new File("D://Games");
-        createDir(games);
+        File[] directories = {
+                new File("D://Games"),
+                new File("D://Games/src"),
+                new File("D://Games/res"),
+                new File("D://Games/savegames"),
+                new File("D://Games/temp"),
+                new File("D://Games/src/main"),
+                new File("D://Games/src/test"),
+                new File("D://Games/res/drawables"),
+                new File("D://Games/res/vectors"),
+                new File("D://Games/res/icons")
+        };
 
-        File src = new File("D://Games/src");
-        createDir(src);
+        for (File dir : directories) {
+            createDir(dir);
+        }
 
-        File res = new File("D://Games/res");
-        createDir(res);
+        File[] files = {
+                new File("D://Games/src/main/Main.java"),
+                new File("D://Games/src/main/Utils.java"),
+                new File("D://Games/temp/temp.txt")
+        };
 
-        File saveGames = new File("D://Games/savegames");
-        createDir(saveGames);
-
-        File temp = new File("D://Games/temp");
-        createDir(temp);
-
-        File main = new File("D://Games/src/main");
-        createDir(main);
-
-        File test = new File("D://Games/src/test");
-        createDir(test);
-
-        File mainJava = new File("D://Games/src/main/Main.java");
-        fileCreate(mainJava);
-
-        File utilsJava = new File("D://Games/src/main/Utils.java");
-        fileCreate(utilsJava);
-
-        File drawables = new File("D://Games/res/drawables");
-        createDir(drawables);
-
-        File vectors = new File("D://Games/res/vectors");
-        createDir(vectors);
-
-        File icons = new File("D://Games/res/icons");
-        createDir(icons);
-
-        File tempTxt = new File("D://Games/temp/temp.txt");
-        fileCreate(tempTxt);
+        for (File anyFile : files) {
+            fileCreate(anyFile);
+        }
 
         String text = String.valueOf(notifyText);
         System.out.println(text);
 
-        try (FileWriter tempWriter = new FileWriter(tempTxt)) {
+        try (FileWriter tempWriter = new FileWriter("D://Games/temp/temp.txt")) {
             tempWriter.write(text);
             tempWriter.flush();
 
